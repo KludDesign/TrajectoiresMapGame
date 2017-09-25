@@ -4,6 +4,7 @@
   "description": "Browser interface for Johnny-Five",
   "main": "script.js",
   "dependencies": {
+    "express": "^4.15.5",
     "johnny-five": "~0.11.5",
     "socket.io": "~2.0.3"
   },
