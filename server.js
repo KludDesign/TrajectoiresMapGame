@@ -43,5 +43,8 @@ board.on('ready', function() {
   button.on('press', function() {
     console.log( "Button pressed" );
     led.toggle();
+
+    // Envoyer l'événement au front lorsque le bouton est appuié
+    io.emit('song');
   });
 });
