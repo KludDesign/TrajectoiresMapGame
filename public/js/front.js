@@ -9,8 +9,13 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
-  //click sur le bouton
+  //click sur le bouton pour allumer la led
   socket.on('song', function () {
     espagnol.play();
+  });
+
+  //click sur le bouton pour changer de couleur de fond
+  socket.on('jeu1', function () {
+    $('.map').toggleClass('map2');
   });
 });

@@ -29,8 +29,13 @@ board.on('ready', function() {
   // Create a new `led` instance.
   var led = new five.Led(13);
   // Create a new `button` hardware instance.
-  button = new five.Button({
+  button2 = new five.Button({
     pin: 2,
+    isPullup: true,
+  });
+
+  button6 = new five.Button({
+    pin: 6,
     isPullup: true,
   });
 
@@ -40,11 +45,18 @@ board.on('ready', function() {
     });
   });
 
-  button.on('press', function() {
-    console.log( "Button pressed" );
+  button2.on('press', function() {
+    console.log( "Button 2 pressed" );
     led.toggle();
-
     // Envoyer l'événement au front lorsque le bouton est appuié
     io.emit('song');
   });
+
+  button6.on('press', function() {
+    console.log( "Button 6 pressed" );
+    led.toggle();
+    // Envoyer l'événement au front lorsque le bouton est appuié
+    io.emit('jeu1');
+  });
+
 });
