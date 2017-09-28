@@ -26,15 +26,21 @@ app.use('/public', express.static(__dirname + '/public'));
 
 // Manipulation de la carte Arduino avec johnny-five
 board.on('ready', function() {
-  // Create a new `led` instance.
+  // Create a new `led` instance and initialise the led on
   var led = new five.Led(13);
+  led.on();
+  // Create a new 'relay' instance
+  var relay = new five.Relay({
+    pin: 8,
+    type: "NO",
+  });
   // Create a new `button` hardware instance.
-  button2 = new five.Button({
+  var button2 = new five.Button({
     pin: 2,
     isPullup: true,
   });
 
-  button6 = new five.Button({
+  var button6 = new five.Button({
     pin: 6,
     isPullup: true,
   });
@@ -55,6 +61,7 @@ board.on('ready', function() {
   button6.on('press', function() {
     console.log( "Button 6 pressed" );
     led.toggle();
+    relay.toggle();
     // Envoyer l'événement au front lorsque le bouton est appuié
     io.emit('jeu1');
   });
