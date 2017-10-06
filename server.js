@@ -8,7 +8,12 @@ var express = require('express'),
      five = require('johnny-five'),
      board = new five.Board(),
 
-     valid = require('./public/js/validation');
+     valid = require('./public/js/validation'),
+     espagneMap = false,
+     espagneButton = false,
+     mapArray = {espagneMap: false, danemarkMap: false, franceMap: false, royaumeUniMap: false, portugalMap: false, paysBasMap: false, canadaMap: false, indeMap: false, mexiqueMap: false, norvegeMap: false, VietnamMap: false, japonMap: false, greceMap: false, afriqueMap: false},
+     buttonArray = {espagneButton: false, danemarkButton: false, franceButton: false, royaumeUniButton: false, portugalMap: false, paysBasMap: false, canadaMap: false, indeMap: false, mexiqueMap: false, norvegeMap: false, VietnamMap: false, japonMap: false, greceMap: false, afriqueMap: false};
+
 // Ecoute sur le port 8080 de localhost
 server.listen(8080);
 
@@ -129,107 +134,100 @@ board.on('ready', () => {
     isPullup: true,
   });
 
-  var test1 = false;
-  var test2 = false;
   // Evenement lors du click sur la map ------------------------------------------------------
   io.on('connection', (socket) => {
     socket.on('clickEspagne',  () => {
       led.toggle();
       console.log( "Espagne");
-      test2 = true;
-      if (test1 == true && test2 == true){
-        console.log( "Gagné!!!!");
-      }
-      else{
-        console.log( "tu t'es trompé!!");
-      };
-      return test1 = false, test2 = false;
+      espagneMap = true;
+      valid.validation(espagneMap, espagneButton);
+      return espagneMap = false, espagneButton = false;
     });
   });
 
   // Evenement lors de l'appui sur les bouttons du jeu Gauche -----------------------------------
   button1G.on('press', () => {
-    console.log( "Button 1 pressed" );
+    console.log( "Button 1G pressed" );
     led.toggle();
-    return test1 = true;
+    return espagneButton = true;
   });
 
   button2G.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 2G pressed" );
     led.toggle();
   });
 
   button3G.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 3G pressed" );
     led.toggle();
   });
 
   button4G.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 4G pressed" );
     led.toggle();
   });
 
   button5G.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 5G pressed" );
     led.toggle();
   });
 
   button6G.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 6G pressed" );
     led.toggle();
   });
 
   button7G.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 7G pressed" );
     led.toggle();
   });
 
   button8G.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 8G pressed" );
     led.toggle();
   });
 
   button9G.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 9G pressed" );
     led.toggle();
   });
 
   button10G.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 10G pressed" );
     led.toggle();
   });
 
   // Evenement lors de l'appui sur les bouttons du jeu Gauche -----------------------------------
   button1D.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 1D pressed" );
     led.toggle();
     // Envoyer l'événement au front lorsque le bouton est appuié
     io.emit('song');
   });
 
   button2D.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 2D pressed" );
     led.toggle();
     // Envoyer l'événement au front lorsque le bouton est appuié
     io.emit('song');
   });
 
   button3D.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 3D pressed" );
     led.toggle();
     // Envoyer l'événement au front lorsque le bouton est appuié
     io.emit('song');
   });
 
   button4D.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 4D pressed" );
     led.toggle();
     // Envoyer l'événement au front lorsque le bouton est appuié
     io.emit('song');
   });
 
   button5D.on('press', () => {
-    console.log( "Button 2 pressed" );
+    console.log( "Button 5D pressed" );
     led.toggle();
     // Envoyer l'événement au front lorsque le bouton est appuié
     io.emit('song');
