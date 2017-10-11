@@ -5,6 +5,11 @@
   stroke-miterlimit:10;
 }
 
+body polygon{
+  z-index:2;
+  position: absolute;
+}
+
 .map2{
   fill:#7dbbd3;
   stroke:#FFFFFF;
