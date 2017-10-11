@@ -1,5 +1,6 @@
 <html>
 <head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <script src="/socket.io/socket.io.js"></script>
   <script src="public/js/jquery-3.2.1.min.js"></script>
 
@@ -11,49 +12,138 @@
 <body>
 
   <!-- Map svg -->
-  <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1895px" height="1064px" viewBox="0 0 1895.258 1069.027" style="enable-background:new 0 0 1895.258 1069.027;" xml:space="preserve">
+  <svg version="1.1" id="Calque_1" filter="url(#filtre)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1895px" height="1064px" viewBox="0 0 1895.258 1069.027" style="enable-background:new 0 0 1895.258 1069.027;" xml:space="preserve">
+
+    <!-- Ombre portée sur svg -->
+    <defs>
+      <filter id="filtre" x="0" y="0" width="200%" height="200%">
+        <feOffset result="offOut" in="SourceGraphic" dx="10" dy="10" />
+        <feColorMatrix result="matrixOut" in="offOut" type="matrix"
+        values="0.4 0 0 0 0 0 0.4 0 0 0 0 0 0.4 0 0 0 0 0 1 0" />
+        <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="5" />
+        <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+      </filter>
+    </defs>
 
   	<!-- Cadre réponse -->
-  	<rect x="63.32" y="823.498" class="cadreReponse" width="258.588" height="184.707"/>
+  	<rect x="63.32" y="823.498" class="map cadreReponse" width="258.588" height="184.707"/>
 
-  	<!-- Danemark -->
-  	<a id="danemark" href="#"><polygon class="map" points="933.75,260.345 947.899,255.906 957.334,269.226 947.067,273.39 938.744,273.39 "/></a>
+    <!-- Texte en cas de mauvaise réponse -->
+    <text id="faux" x="65" y="850">Faux, appuis sur un bouton</text>
+
+    <!-- Texte pour informer l'appui sur le bouton -->
+    <text id="appui" x="65" y="850">Appui sur un bouton</text>
 
   	<!-- Espagne -->
   	<a id="espagne" href="#"><polygon class="map" points="856.891,399.458 882.046,395.105 901.762,363.912 884.268,352.193 843.571,350.712 843.571,359.68 855.223,360.237 "/></a>
+    <text id="espagneTexte" x="65" y="850">
+      <tspan x="65" y="850"> De l'espagnol siesta, lui-même </tspan>
+      <tspan x="65" y="870"> du latin sexta (hora), la sixième heure </tspan>
+      <tspan x="65" y="890"> qui correspondait chez les Romains au </tspan>
+      <tspan x="65" y="910">  milieu de la journée, midi.</tspan>
+    </text>
+
+  	<!-- Danemark -->
+  	<a id="danemark" href="#"><polygon class="map" points="933.75,260.345 947.899,255.906 957.334,269.226 947.067,273.39 938.744,273.39 "/></a>
+    <text id="danemarkTexte" x="65" y="850">
+      <tspan x="65" y="850"> Du danois aderduun signifiant "le duvet de l'eider", </tspan>
+      <tspan x="65" y="870"> un canard des régions du Nord. En 1830, Balzac </tspan>
+      <tspan x="65" y="890"> mentionne cette délicieuse invention des pays froids. </tspan>
+    </text>
 
   	<!-- France -->
   	<a id="france" href="#"><polygon class="map" points="926.982,318.886 901.762,303.846 870.949,321.115 884.268,352.193 901.762,363.912 906.835,355.889 922.094,355.889 "/></a>
+    <text id="franceTexte" x="65" y="850">
+      <tspan x="65" y="850"> Les anglais ont adapté le jeu de paume français </tspan>
+      <tspan x="65" y="870"> en le nommant tenez, reprenant l'exclamation du service. </tspan>
+      <tspan x="65" y="890"> Le nom devient tennis et revient en France en 1836. </tspan>
+    </text>
 
   	<!-- Royaume-Uni -->
   	<a id="royaumeUni" href="#"><polygon class="map" points="873.168,243.424 898.327,287.819 864.29,303.357 867.989,286.338 856.891,267.841 "/></a>
+    <text id="royaumeUniTexte" x="65" y="850">
+      <tspan x="65" y="850"> De l'anglais packet-boat, bateau de paquets </tspan>
+      <tspan x="65" y="870"> de courrier. Mot francisé au XVIIe désignant un </tspan>
+      <tspan x="65" y="890"> navire transportant aussi des passagers. </tspan>
+    </text>
 
   	<!-- Portugal -->
   	<a id="portugal" href="#"><polygon class="map" points="843.571,401.764 843.571,359.68 855.223,360.237 856.891,399.458 "/></a>
+    <text id="portugalTexte" x="65" y="850">
+      <tspan x="65" y="850"> Du portugais cachalote, dérivé de cachola, </tspan>
+      <tspan x="65" y="870"> grosse tête. Les apothicaires du XVIIe extrayaient </tspan>
+      <tspan x="65" y="890"> des substances de la tête de l'animal,</tspan>
+      <tspan x="65" y="910"> notamment l'ambre. </tspan>
+    </text>
 
   	<!-- Pays-Bas -->
   	<a id="paysBas" href="#"><polygon class="map" points="935.18,285.118 932.125,305.539 913.267,297.399 "/></a>
+    <text id="paysBasTexte" x="65" y="850">
+      <tspan x="65" y="850">Du néerlandais boeckijn, petit livre. </tspan>
+      <tspan x="65" y="870"> Provenant de boka, du nord de l'Europe, </tspan>
+      <tspan x="65" y="890"> désignant l'hêtre, bois utilisé pour </tspan>
+      <tspan x="65" y="910"> fabriquer des tablettes de textes sacrés.</tspan>
+    </text>
 
   	<!-- Canada, Québec -->
   	<a id="canada" href="#"><polygon class="map" points="598.84,258.403 552.783,237.87 499.506,307.238 491.738,270.058 464.165,244.474 535.579,200.134 515.045,187.37 451.227,199.025 431.248,176.272 377.419,175.718 325.255,152.409 317.003,153.529 289.738,234.541 272.428,295.557 440.314,303.357 468.433,353.669 555.817,319.888 616.599,303.908 "/></a>
+    <text id="canadaTexte" x="65" y="850">
+      <tspan x="65" y="850"> De l'algonquin, langue d'indiens du Canada,  </tspan>
+      <tspan x="65" y="870">  otaban, traîneau. Modifié par les anglais </tspan>
+      <tspan x="65" y="890"> en tobaggan et reppris par le français en 1890. </tspan>
+    </text>
 
   	<!-- Inde -->
   	<a id="inde" href="#"><polygon class="map" points="1281.974,486.464 1304.174,478.162 1293.075,458.183 1328.037,425.997 1356.893,437.65 1356.893,453.745 1394.076,467.062 1439.026,449.859 1423.667,499.52 1408.133,491.295 1348.939,588.965 "/></a>
+    <text id="indeTexte" x="65" y="850">
+      <tspan x="65" y="850"> De l'indien pâdjâma, pantalon léger étroit </tspan>
+      <tspan x="65" y="870"> aux chevilles de certaines régions d'Inde. Les anglais </tspan>
+      <tspan x="65" y="890"> ont repris le mot en ajoutant un "y". </tspan>
+    </text>
 
   	<!-- Mexique -->
   	<a id="mexique" href="#"><polygon class="map" points="367.429,503.134 328.584,509.238 335.243,451.525 223.827,406.778 238.684,478.715 331.593,545.883 "/></a>
+    <text id="mexiqueTexte" x="65" y="850">
+      <tspan x="65" y="850"> Du nahuatl, langue des Aztèques, cacahuatl, </tspan>
+      <tspan x="65" y="870">  arachides. Cacahuète provient de tlavavahuatl, </tspan>
+      <tspan x="65" y="890"> désignant mot à mot "cacao de terre". </tspan>
+    </text>
 
     <!-- Norvège -->
     <a id="norvege" href="#"><polyline class="map" points="942.976,244.533 960.239,210.128 1013.383,180.901 1059.339,176.125 1011.535,161.292 959.74,187.929 911.646,226.406 942.976,244.533 	"/></a>
+    <text id="norvegeTexte" x="65" y="850">
+      <tspan x="65" y="850"> De l'espagnol siesta, lui-même </tspan>
+      <tspan x="65" y="870"> du latin sexta (hora), la sixième heure </tspan>
+      <tspan x="65" y="890"> qui correspondait chez les Romains au </tspan>
+      <tspan x="65" y="910">  milieu de la journée, midi.</tspan>
+    </text>
 
     <!-- Vietnam -->
     <a id="vietnam" href="#"><polygon class="map" points="1480.648,497.142 1500.069,486.485 1533.547,497.142 1519.861,505.354 1538.36,545.31 1521.342,587.485 1503.609,582.528 1523.375,540.869 	"/></a>
+    <text id="vietnamTexte" x="65" y="850">
+      <tspan x="65" y="850"> De l'espagnol siesta, lui-même </tspan>
+      <tspan x="65" y="870"> du latin sexta (hora), la sixième heure </tspan>
+      <tspan x="65" y="890"> qui correspondait chez les Romains au </tspan>
+      <tspan x="65" y="910">  milieu de la journée, midi.</tspan>
+    </text>
 
     <!-- Japon -->
     <a id="japon" href="#"><path class="map" d="M1655.242,325.923 c0,0,34.988,76.212,35.729,77.321c0.74,1.11-44.951,40.511-44.951,40.511l-22.197-13.318l26.239-20.901l6.295-48.835 L1655.242,325.923z"/></a>
+    <text id="japonTexte" x="65" y="850">
+      <tspan x="65" y="850"> De l'espagnol siesta, lui-même </tspan>
+      <tspan x="65" y="870"> du latin sexta (hora), la sixième heure </tspan>
+      <tspan x="65" y="890"> qui correspondait chez les Romains au </tspan>
+      <tspan x="65" y="910">  milieu de la journée, midi.</tspan>
+    </text>
 
     <!-- Grèce -->
     <a id="grece" href="#"><polygon class="map" points="995.319,369.642 1035.731,360.273 1039.129,369.642 1024.87,375.086 1028.347,389.813 1013.014,401.764 	"/></a>
+    <text id="greceTexte" x="65" y="850">
+      <tspan x="65" y="850"> De l'espagnol siesta, lui-même </tspan>
+      <tspan x="65" y="870"> du latin sexta (hora), la sixième heure </tspan>
+      <tspan x="65" y="890"> qui correspondait chez les Romains au </tspan>
+      <tspan x="65" y="910">  milieu de la journée, midi.</tspan>
+    </text>
 
   	<!-- Afrique du nord, Moyen-Orient -->
   	<a id="moyenOrient" href="#"><g>
@@ -72,6 +162,12 @@
   		<polygon class="map" points="1089.825,518.993 1021.946,535.915 1020.401,448.49 1062.735,446.753 1091.5,446.982 1099.181,464.903 1071.203,469.335 	"/>
   		<polygon class="map" points="1229.889,410.447 1234.007,450.008 1307.463,400.173 1292.519,381.417 1259.883,388.447 	"/>
   	</g></a>
+    <text id="moyenOrientTexte" x="65" y="850">
+      <tspan x="65" y="850"> 	De l'arabe matrah, tapis et cousins jetés </tspan>
+      <tspan x="65" y="870"> au sol pour s'asseoir ou se coucher. Arrive </tspan>
+      <tspan x="65" y="890"> en Europe par l'italien materasso, grand </tspan>
+      <tspan x="65" y="910">  coussin pour garnir le lit. </tspan>
+    </text>
 
   	<!-- Autre -->
   	<a id="autre" href="#"><g>

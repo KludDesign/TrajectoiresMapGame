@@ -9,12 +9,12 @@
 //
 // exports.validation = validation;
 
-var validation = (x, y) => {
-  if (x == true && y == true){
-    console.log( "Gagné!!!!");
-  }
-  else{
-    console.log( "tu t'es trompé!!");
-  };
-};
-exports.validation = validation;
+// var validation = (x, y) => {
+//   if (x == true && y == true){
+//     console.log( "Gagné!!!!");
+//   }
+//   else{
+//     console.log( "tu t'es trompé!!");
+//   };
+// };
+// exports.validation = validation;
