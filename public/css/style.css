@@ -22,3 +22,13 @@
 a .map:active{
   opacity: 0.3;
 }
+
+body{
+  background-color: #EBF4FA;
+}
+
+.ocean{
+  stroke-miterlimit: 10;
+  fill: #EBF4FA;
+  stroke: #EBF4FA;
+}
