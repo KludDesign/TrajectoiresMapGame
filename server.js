@@ -31,13 +31,13 @@ app.use('/public', express.static(__dirname + '/public'));
 board.on('ready', () => {
   // Déclaration des bouttons jeu de gauche ------------------------------------
   var buttonsG = new five.Buttons({
-    pins: [10],
+    pins: [44, 45, 46, 47, 48, 49, 50, 51, 52, 53],
     isPullup: true
   });
 
   // Déclaration des boutons jeu de droite ----------------------------------
   var buttonsD = new five.Buttons({
-    pins: [8],
+    pins: [8, 9, 10, 11, 12],
     isPullup: true
   });
 
@@ -47,7 +47,7 @@ board.on('ready', () => {
   });
 
   var relay = new five.Relay({
-    pin: 2,
+    pin: 21,
     type: "NO",
   });
 
@@ -59,24 +59,9 @@ board.on('ready', () => {
     io.emit('swichJeu');
   });
 
-  // Evenement lors du click sur la map ------------------------------------------------------
-  io.on('connection', (socket) => {
-
-    socket.on('japonClick',  () => {
-      console.log( "clickEspagne" );
-      io.emit('japonButton');
-    });
-
-    socket.on('indeClick',  () => {
-      console.log( "clickFrance" );
-      io.emit('indeButton');
-    });
-  });
-
   // Evenement lors de l'appui sur les bouttons du jeu Gauche -----------------------------------
   buttonsG.on('press', (button) => {
     var pinNum = button.pin;
-    io.emit('miseZero');
 
     switch (pinNum) {
       case 44:
@@ -133,7 +118,6 @@ board.on('ready', () => {
 
   buttonsD.on('press', (button) => {
     var pinNum = button.pin;
-    io.emit('miseZero');
 
     switch (pinNum) {
       case 8:
