@@ -1,57 +1,90 @@
+
 $(document).ready( () => {
   var socket = io('http://localhost:8080');
   var espagne = new Audio("http://localhost:8080/public/sons/espagnol.mp3");
   var vietnam = new Audio("http://localhost:8080/public/sons/vietnamien.mp3");
   var japon = new Audio("http://localhost:8080/public/sons/japonais.mp3");
-  var bouton = false;
-  var map = false;
-  var nomMap = "";
-  var nomBouton = "";
+  var nomBouton;
+  var nomMap;
+  var bouton;
+  var map;
+
 
 
   $('text').hide();
   $('#appui').show();
 
-  if (map === true && bouton === false){
-    $('text').hide();
-    $('#appui').show();
-  };
+  // if (map == true && bouton == false){
+  //   $('text').hide();
+  // };
 
-  if (bouton === true){
-    if (map === true){
-      if (nomBouton === nomMap){
-        $('.pays').each(function() {
-            var id = $(this).attr('id');
-            $('text').hide();
-            $('#'+id+'Texte').show();
-        });
-        return bouton = false, map = false;
-      }
-      else{
-        $('#faux').show();
-        return bouton = false, map = false;
-      };
-    }
-    else{
-      $('text').hide();
-      $('#appuiMap').show();
-    }
-  };
+
+  // if (bouton == true){
+  //   if (map == true){
+  //     if (nomBouton === nomMap){
+  //       $('.pays').each(function() {
+  //           var id = $(this).attr('id');
+  //           $('text').hide();
+  //           $('#'+id+'Texte').show();
+  //       });
+  //       return bouton = false, map = false;
+  //     }
+  //     else{
+  //       $('#faux').show();
+  //       return bouton = false, map = false;
+  //     };
+  //   }
+  //   else{
+  //     $('text').hide();
+  //     $('#appuiMap').show();
+  //   }
+  //   $('text').hide();
+  // };
 
   //Vérification de validation click sur la map et sur le bouton
-  $('.pays').each(function() {
-    $(this).click( () => {
-      return map = true, nomMap = $(this).attr('id');
-    });
-  });
+
+
 
   //click sur les boutons du jeu de gauche
+  function verif(z, x){
+    if (z === true){
+      clickMap(nomMap);
+        if (x === nomMap){
+          $('.pays').each(function() {
+              var id = $(this).attr('id');
+              $('text').hide();
+              $('#'+id+'Texte').show();
+          });
+          return bouton = false, map = false;
+        }
+        else{
+          $('text').hide();
+          $('#faux').show();
+        };
+      $('text').hide();
+      $('#appuiMap').show();
+    };
+  };
+
+function clickMap(y){
+  $('.pays').each(function() {
+    $(this).click(function() {
+      return y = $(this).attr('id');
+    });
+  });
+};
+
+
+
   socket.on('espagneButton', () => {
-    return nomBouton = 'espagne', bouton = true, map = false;
+    bouton = true;
+    nomBouton = 'espagne';
+
+    verif(bouton, nomBouton);
   });
 
   socket.on('indeButton', () => {
-    return nomBouton = 'inde', bouton = true, map = false;
+    nomBouton = 'inde'; bouton = true; map = false;
   });
 
   socket.on('mexiqueButton', () => {

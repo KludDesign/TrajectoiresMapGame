@@ -27,10 +27,6 @@ body{
   background-color: #EBF4FA;
 }
 
-text{
-  display: none;
-}
-
 .ocean{
   stroke-miterlimit: 10;
   fill: #EBF4FA;
