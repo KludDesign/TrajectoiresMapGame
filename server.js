@@ -53,9 +53,8 @@ board.on('ready', () => {
 
   // Evenement pour le changement de jeu
   buttonRelay.on('press', () => {
-    console.log( "Button relay pressed" );
+    console.log('Relay pressed');
     relay.toggle();
-    // Envoyer l'événement au front lorsque le bouton est appuié
     io.emit('swichJeu');
   });
 
@@ -116,13 +115,13 @@ board.on('ready', () => {
     };
   });
 
+  // Evenement lors de l'appui sur les bouttons du jeu Droite -----------------------------------
   buttonsD.on('press', (button) => {
     var pinNum = button.pin;
 
     switch (pinNum) {
       case 8:
         console.log('pays'+pinNum);
-        // Envoyer l'événement au front lorsque le bouton est appuié
         io.emit('espagneSong');
       break;
 
