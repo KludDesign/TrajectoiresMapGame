@@ -31,7 +31,7 @@ app.use('/public', express.static(__dirname + '/public'));
 board.on('ready', () => {
   // Déclaration des bouttons jeu de gauche ------------------------------------
   var buttonsG = new five.Buttons({
-    pins: [44, 45, 46, 47, 48, 49, 50, 51, 52, 53],
+    pins: [44, 45, 46, 47, 48, 49, 50, 51, 52],
     isPullup: true
   });
 
@@ -80,7 +80,7 @@ board.on('ready', () => {
 
       case 47:
           console.log('pays'+pinNum);
-          io.emit('paysBasButton');
+          io.emit('greceButton');
       break;
 
       case 48:
@@ -105,12 +105,7 @@ board.on('ready', () => {
 
       case 52:
           console.log('pays'+pinNum);
-          io.emit('portugalButton');
-      break;
-
-      case 53:
-          console.log('pays'+pinNum);
-          io.emit('danemarkButton');
+          io.emit('italieButton');
       break;
     };
   });

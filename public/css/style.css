@@ -1,3 +1,15 @@
+@font-face {
+	font-family: 'Conv_NeutraText-Bold';
+	src: url('../font/NeutraText-Bold.eot');
+	src: local('☺'), url('../font/NeutraText-Bold.woff') format('woff'), url('../font/NeutraText-Bold.ttf') format('truetype'), url('../font/NeutraText-Bold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+text {
+    font-family: 'Conv_NeutraText-Bold';
+}
+
 .map{
   fill:#C6C6C6;
   stroke:#FFFFFF;
