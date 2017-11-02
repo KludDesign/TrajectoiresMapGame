@@ -32,13 +32,15 @@ board.on('ready', () => {
   // Déclaration des bouttons jeu de gauche ------------------------------------
   var buttonsG = new five.Buttons({
     pins: [44, 45, 46, 47, 48, 49, 50, 51, 52],
-    isPullup: true
+    isPullup: true,
+    holdtime: 2000
   });
 
   // Déclaration des boutons jeu de droite ----------------------------------
   var buttonsD = new five.Buttons({
     pins: [8, 9, 10, 11, 12],
-    isPullup: true
+    isPullup: true,
+    holdtime: 2000
   });
 
   var buttonRelay = new five.Button({
@@ -110,6 +112,58 @@ board.on('ready', () => {
     };
   });
 
+  //Réponse lors de l'appui long jeu de gauche
+  buttonsG.on("hold", function(button) {
+    var pinNum = button.pin;
+
+    switch (pinNum) {
+      case 44:
+        console.log('YEPA!!');
+        io.emit('espagneGReponse');
+      break;
+
+      case 45:
+          console.log('YEPA!!');
+          io.emit('indeReponse');
+      break;
+
+      case 46:
+          console.log('YEPA!!');
+          io.emit('mexiqueReponse');
+      break;
+
+      case 47:
+          console.log('YEPA!!');
+          io.emit('greceGReponse');
+      break;
+
+      case 48:
+          console.log('YEPA!!');
+          io.emit('moyenOrientReponse');
+      break;
+
+      case 49:
+          console.log('YEPA!!');
+          io.emit('franceReponse');
+      break;
+
+      case 50:
+          console.log('YEPA!!');
+          io.emit('royaumeUniReponse');
+      break;
+
+      case 51:
+          console.log('YEPA!!');
+          io.emit('canadaReponse');
+      break;
+
+      case 52:
+          console.log('YEPA!!');
+          io.emit('italieReponse');
+      break;
+    };
+  });
+
   // Evenement lors de l'appui sur les bouttons du jeu Droite -----------------------------------
   buttonsD.on('press', (button) => {
     var pinNum = button.pin;
@@ -138,6 +192,38 @@ board.on('ready', () => {
       case 12:
         console.log('pays'+pinNum);
         io.emit('norvegeSong');
+      break;
+    };
+  });
+
+  //Réponse lors de l'appui long jeu de droite
+  buttonsD.on("hold", function(button) {
+    var pinNum = button.pin;
+
+    switch (pinNum) {
+      case 8:
+        console.log('YEPA!!');
+        io.emit('espagneDReponse');
+      break;
+
+      case 9:
+        console.log('YEPA!!');
+        io.emit('japonReponse');
+      break;
+
+      case 10:
+        console.log('YEPA!!');
+        io.emit('greceDReponse');
+      break;
+
+      case 11:
+        console.log('YEPA!!');
+        io.emit('vietnamReponse');
+      break;
+
+      case 12:
+        console.log('YEPA!!');
+        io.emit('norvegeReponse');
       break;
     };
   });

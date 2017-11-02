@@ -41,7 +41,7 @@ $(document).ready( () => {
           var id = $(this).attr('id');
           $('text').hide();
           $('#'+id+'Texte').show();
-          $('.pays').off().delay(2000).show("fast", appui);
+          $('.pays').off().delay(12000).show("fast", appui);
           $("#bon").css("visibility", "visible");
           $("#mauvais").css("visibility", "hidden");
         }else {
@@ -148,6 +148,119 @@ $(document).ready( () => {
     norvegien.play();
     nomBouton = 'norvege';
     verif(nomBouton);
+  });
+
+  //rester appuié pour avoir la réponse
+  socket.on('espagneGReponse', () => {
+    $('text').hide();
+    $('#espagneTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('indeReponse', () => {
+    $('text').hide();
+    $('#indeTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('mexiqueReponse', () => {
+    $('text').hide();
+    $('#mexiqueTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('greceGReponse', () => {
+    $('text').hide();
+    $('#greceTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('moyenOrientReponse', () => {
+    $('text').hide();
+    $('#moyenOrientTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('franceReponse', () => {
+    $('text').hide();
+    $('#franceTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('royaumeUniReponse', () => {
+    $('text').hide();
+    $('#royaumeUniTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('canadaReponse', () => {
+    $('text').hide();
+    $('#canadaTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('italieReponse', () => {
+    $('text').hide();
+    $('#italieTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('espagneDReponse', () => {
+    $('text').hide();
+    $('#espagneDTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('vietnamReponse', () => {
+    $('text').hide();
+    $('#vietnamTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('japonReponse', () => {
+    $('text').hide();
+    $('#japonTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('greceDReponse', () => {
+    $('text').hide();
+    $('#greceDTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  });
+
+  socket.on('norvegeReponse', () => {
+    $('text').hide();
+    $('#norvegeTexte').show();
+    $('.pays').off().delay(12000).show("fast", appui);
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
   });
 
 
