@@ -21,7 +21,7 @@ Pour installer le logiciel il suffit seulement de décompresser le dossier et co
 * PM2 est un gestionnaire de node en mode production. Plus d'infos sur [cette page](https://www.npmjs.com/package/pm2). Installer PM2 en entrant la commande suivante : 
 > $ npm install pm2@latest -g
 * Démarrer l'application avec la commande suivante :
-> $ pm2 start server.js 
+> $ pm2 start server.js
 Puis vérifier si le serveur est lancé en allant sur la page http://localhost:8080/. Si le serveur est lancé la carte interactive devrait s'afficher, sinon, il faut vérifier que toutes les étapes précédentes sont bien respectées.
 Pour vérifier si PM2 a bien démarré le serveur :
 > $ pm2 list
