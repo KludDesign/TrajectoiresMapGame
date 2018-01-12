@@ -18,7 +18,7 @@ Pour installer le logiciel il suffit seulement de décompresser le dossier et co
 * Ouvrir une invite de commande à la racine du dossier logiciel (accès rapide Ctrl+click droit/ouvrir la fenêtre de commande ici).
 * NPM est le gestionnaire de package Node.js, il permet d'installer les dépendances du projet. Pour installer les dépendances, entrer la commande suivante : 
 > $ npm install
-* PM2 est un gestionnaire de node en mode production. Plus d'infos sur [cette page](https://www.npmjs.com/package/pm2). Installer PM2 en entrant la commande suivante : 
+* PM2 est un gestionnaire de node en mode production (plus d'infos sur [cette page](https://www.npmjs.com/package/pm2)). Installer PM2 en entrant la commande suivante : 
 > $ npm install pm2@latest -g
 * Démarrer l'application avec la commande suivante :
 > $ pm2 start server.js
