@@ -22,7 +22,7 @@ Pour installer le logiciel il suffit seulement de décompresser le dossier et co
 > $ npm install pm2@latest -g
 * Démarrer l'application avec la commande suivante :
 > $ pm2 start server.js
-* Vérifier si le serveur est lancé en allant sur la page http://localhost:8080/. Si le serveur est lancé, la carte interactive devrait s'afficher à l'écran, sinon, il faut vérifier que toutes les étapes précédentes sont bien respectées. Aussi, pour vérifier si PM2 a bien démarré le serveur :
+* Vérifier si le serveur est lancé en allant sur la page http://localhost:8080/. Si le serveur est lancé, la carte interactive devrait s'afficher à l'écran, sinon, il faut vérifier que toutes les étapes précédentes sont bien respectées. Pour vérifier si PM2 a bien démarré le serveur, entrer la commande suivante :
 > $ pm2 list
 * Ensuite, si tout est ok il faut configurer PM2 pour que l'application boot à chaque redémarrage. Pour cela il faut configurer PM2 pour qu'il détecte l'OS utilisé :
 > $ pm2 startup  
