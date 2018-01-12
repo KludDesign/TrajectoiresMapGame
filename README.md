@@ -29,5 +29,4 @@ Pour installer le logiciel il suffit seulement de décompresser le dossier et co
 * Puis enregistrer la liste du processus :
 > $ pm2 save 
 
-
-
+Voilà! Enjoy! :)
