@@ -8,4 +8,4 @@ Ce module d'exposition est un jeu interactif qui permet de mettre en avant l'ori
 
 ## Etapes d'installation software
 ### 1. L'environnement Node.js
-Pour que le projet fonctionne il est necessaire d'installer la dernière version de [Node.js](https://nodejs.org/en/).
+Installer la dernière version de [Node.js](https://nodejs.org/en/). Privilégier la version LTS qui assure une stabilité dans le temps.
