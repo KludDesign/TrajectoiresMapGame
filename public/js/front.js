@@ -1,32 +1,43 @@
 
 $(document).ready( () => {
   var socket = io('http://localhost:8080');
-  var espagne = new Audio("http://localhost:8080/public/sons/espagnol.mp3");
-  var vietnam = new Audio("http://localhost:8080/public/sons/vietnamien.mp3");
-  var japon = new Audio("http://localhost:8080/public/sons/japonais.mp3");
-  var grec = new Audio("http://localhost:8080/public/sons/grec.mp3");
-  var norvegien = new Audio("http://localhost:8080/public/sons/norvegien.mp3");
 
-  var cacao = new Audio("http://localhost:8080/public/sons/cacao.mp3");
-  var estragon = new Audio("http://localhost:8080/public/sons/estragon.mp3");
-  var lavande = new Audio("http://localhost:8080/public/sons/lavande.mp3");
-  var matelas = new Audio("http://localhost:8080/public/sons/matelas.mp3");
-  var paquebot = new Audio("http://localhost:8080/public/sons/paquebot.mp3");
-  var pyjama = new Audio("http://localhost:8080/public/sons/pyjama.mp3");
-  var sieste = new Audio("http://localhost:8080/public/sons/sieste.mp3");
-  var tennis = new Audio("http://localhost:8080/public/sons/tennis.mp3");
-  var toboggan = new Audio("http://localhost:8080/public/sons/toboggan.mp3");
+
+  var songArray = {
+    espagne: new Audio("http://localhost:8080/public/sons/espagnol.mp3"),
+    vietnam: new Audio("http://localhost:8080/public/sons/vietnamien.mp3"),
+    japon: new Audio("http://localhost:8080/public/sons/japonais.mp3"),
+    grec: new Audio("http://localhost:8080/public/sons/grec.mp3"),
+    norvegien: new Audio("http://localhost:8080/public/sons/norvegien.mp3"),
+
+    cacao: new Audio("http://localhost:8080/public/sons/cacao.mp3"),
+    estragon: new Audio("http://localhost:8080/public/sons/estragon.mp3"),
+    lavande: new Audio("http://localhost:8080/public/sons/lavande.mp3"),
+    matelas: new Audio("http://localhost:8080/public/sons/matelas.mp3"),
+    paquebot: new Audio("http://localhost:8080/public/sons/paquebot.mp3"),
+    pyjama: new Audio("http://localhost:8080/public/sons/pyjama.mp3"),
+    sieste: new Audio("http://localhost:8080/public/sons/sieste.mp3"),
+    tennis: new Audio("http://localhost:8080/public/sons/tennis.mp3"),
+    toboggan: new Audio("http://localhost:8080/public/sons/toboggan.mp3")
+  };
+
   var bouton;
 
-
-    function appui(){
-      $('text').hide();
-      $('#appui').show();
-      $("#bon").css("visibility", "hidden");
-      $("#mauvais").css("visibility", "hidden");
+  function audioStop(){
+    for (var propriete in songArray) {
+      songArray[propriete].pause();
+      songArray[propriete].currentTime = 0;
     };
+  };
 
-    appui();
+  function appui(){
+    $('text').hide();
+    $('#appui').show();
+    $("#bon").css("visibility", "hidden");
+    $("#mauvais").css("visibility", "hidden");
+  };
+
+  appui();
 
   //Vérification de validation click sur la map et sur le bouton
   function verif(bouton){
@@ -55,23 +66,26 @@ $(document).ready( () => {
   };
 
 
-//click sur les boutons pour du de Gauche-------------------------------------
+//click sur les boutons jeu de Gauche-------------------------------------
   socket.on('espagneButton', () => {
     $("#espagne").css("visibility", "visible");
     $("#espagneD").css("visibility", "hidden");
-    sieste.play();
+    audioStop();
+    songArray.sieste.play();
     nomBouton = 'espagne';
     verif(nomBouton);
   });
 
   socket.on('indeButton', () => {
-    pyjama.play();
+    audioStop();
+    songArray.pyjama.play();
     nomBouton = 'inde';
     verif(nomBouton);
   });
 
   socket.on('mexiqueButton', () => {
-    cacao.play();
+    audioStop();
+    songArray.cacao.play();
     nomBouton = 'mexique';
     verif(nomBouton);
   });
@@ -79,59 +93,68 @@ $(document).ready( () => {
   socket.on('greceButton', () => {
     $("#grece").css("visibility", "visible");
     $("#greceD").css("visibility", "hidden");
-    estragon.play();
+    audioStop();
+    songArray.estragon.play();
     nomBouton = 'grece';
     verif(nomBouton);
   });
 
   socket.on('moyenOrientButton', () => {
-    matelas.play();
+    audioStop();
+    songArray.matelas.play();
     nomBouton = 'moyenOrient';
     verif(nomBouton);
   });
 
   socket.on('franceButton', () => {
-    tennis.play();
+    audioStop();
+    songArray.tennis.play();
     nomBouton = 'france';
     verif(nomBouton);
   });
 
   socket.on('royaumeUniButton', () => {
-    paquebot.play();
+    audioStop();
+    songArray.paquebot.play();
     nomBouton = 'royaumeUni';
     verif(nomBouton);
   });
 
   socket.on('canadaButton', () => {
-    toboggan.play();
+    audioStop();
+    songArray.toboggan.play();
     nomBouton = 'canada';
     verif(nomBouton);
   });
 
   socket.on('italieButton', () => {
-    lavande.play();
+    audioStop();
+    songArray.lavande.play();
     nomBouton = 'italie';
     verif(nomBouton);
   });
 
 
-  //click sur les boutons pour du de Droite-------------------------------------
+  //click sur les boutons jeu de Droite-------------------------------------
   socket.on('espagneSong', () => {
     $("#espagne").css("visibility", "hidden");
     $("#espagneD").css("visibility", "visible");
-    espagne.play();
+    audioStop();
+    songArray.espagne.play();
     nomBouton = 'espagneD';
     verif(nomBouton);
   });
 
   socket.on('vietnamSong', () => {
-    vietnam.play();
+    audioStop();
+    songArray.vietnam.play();
     nomBouton = 'vietnam';
     verif(nomBouton);
   });
 
   socket.on('japonSong', () => {
-    japon.play();
+    audioStop();
+    songArray.japon.play();
     nomBouton = 'japon';
     verif(nomBouton);
   });
@@ -139,13 +162,15 @@ $(document).ready( () => {
   socket.on('greceSong', () => {
     $("#grece").css("visibility", "hidden");
     $("#greceD").css("visibility", "visible");
-    grec.play();
+    audioStop();
+    songArray.grec.play();
     nomBouton = 'greceD';
     verif(nomBouton);
   });
 
   socket.on('norvegeSong', () => {
-    norvegien.play();
+    audioStop();
+    songArray.norvegien.play();
     nomBouton = 'norvege';
     verif(nomBouton);
   });
